@@ -40,6 +40,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 /**
  * Created by jgh76 on 2017-12-10.
  */
@@ -93,7 +95,7 @@ public class ChatFrag extends Fragment {
 
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_chat,parent,false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_friend,parent,false);
 
             return new CustomViewHolder(view);
         }
@@ -101,7 +103,7 @@ public class ChatFrag extends Fragment {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-
+            // 이미지 맵핑
             Glide.with
                     (holder.itemView.getContext())
                     .using(new FirebaseImageLoader())
@@ -111,7 +113,7 @@ public class ChatFrag extends Fragment {
             ((CustomViewHolder)holder).tv_location.setText(userModels.get(position).getLocation());
 
 
-
+            // 채팅 시작
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -131,16 +133,15 @@ public class ChatFrag extends Fragment {
         }
 
         private class CustomViewHolder extends RecyclerView.ViewHolder {
-            public ImageView iv_chat_profile;
+            public CircleImageView iv_chat_profile;
             public TextView tv_nickname;
             public TextView tv_location;
 
             public CustomViewHolder(View view) {
                 super(view);
-                iv_chat_profile = (ImageView) view.findViewById(R.id.iv_chat_profile);
-                tv_nickname = (TextView) view.findViewById(R.id.tv_nickname);
-                tv_location = (TextView)view.findViewById(R.id.tv_content);
-                tv_location.setTextColor(Color.parseColor("#ffff8800"));
+                iv_chat_profile = (CircleImageView) view.findViewById(R.id.iv_friend_profile);
+                tv_nickname = (TextView) view.findViewById(R.id.tv_friend_nickname);
+                tv_location = (TextView)view.findViewById(R.id.tv_friend_location);
             }
         }
     }

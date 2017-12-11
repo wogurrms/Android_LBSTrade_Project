@@ -1,10 +1,12 @@
 package com.example.jgh76.myproject_jjh.model;
 
+import java.io.Serializable;
+
 /**
  * Created by jgh76 on 2017-12-05.
  */
 
-public class User {
+public class User implements Serializable{
     String uid;
     String phone;
     String name;

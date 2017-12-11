@@ -1,5 +1,6 @@
 package com.example.jgh76.myproject_jjh.fragment;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
@@ -14,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.jgh76.myproject_jjh.R;
+import com.example.jgh76.myproject_jjh.activity.ZoomActivity;
 import com.example.jgh76.myproject_jjh.model.Product;
 import com.example.jgh76.myproject_jjh.model.User;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -161,7 +163,15 @@ public class MapFrag extends Fragment implements OnMapReadyCallback, GoogleMap.O
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        Toast.makeText(getActivity(),marker.getTitle(),Toast.LENGTH_SHORT).show();
+
+        for(Product product : products){
+            if(marker.getTitle().equals(product.getTitle())){
+                Intent intent = new Intent(getContext(), ZoomActivity.class);
+                intent.putExtra("product", product);
+                startActivity(intent);
+            }
+
+        }
         return false;
     }
 
@@ -172,7 +182,7 @@ public class MapFrag extends Fragment implements OnMapReadyCallback, GoogleMap.O
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLoc, 15));
         mMap.addMarker(new MarkerOptions().position(currentLoc).title(markMsg));
         CircleOptions circle = new CircleOptions().center(currentLoc) //원점
-                .radius(200)      //반지름 단위 : m
+                .radius(500)      //반지름 단위 : m
                 .strokeWidth(0f)  //선너비 0f : 선없음
                 .fillColor(Color.parseColor("#46c5c1ff")); //배경색
 

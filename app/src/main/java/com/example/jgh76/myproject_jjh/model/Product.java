@@ -1,5 +1,6 @@
 package com.example.jgh76.myproject_jjh.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
  * Created by jgh76 on 2017-11-27.
  */
 
-public class Product {
+public class Product implements Serializable {
     // 제목
     String title;
 

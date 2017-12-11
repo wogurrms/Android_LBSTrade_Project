@@ -2,6 +2,9 @@ package com.example.jgh76.myproject_jjh.activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.ShapeDrawable;
+import android.graphics.drawable.shapes.OvalShape;
+import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -49,6 +52,7 @@ import java.util.TimeZone;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ChatActivity extends AppCompatActivity {
 
@@ -63,10 +67,10 @@ public class ChatActivity extends AppCompatActivity {
     private String chatRoomUid;
 
     private User destinationUser;
-    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy.MM.dd HH:mm");
+    private SimpleDateFormat simpleDateFormat = new SimpleDateFormat("HH:mm");
 
     @BindView(R.id.iv_chat_product)
-    ImageView iv_chat_product;
+    CircleImageView iv_chat_product;
 
     @BindView(R.id.tv_chat_title)
     TextView tv_chat_title;

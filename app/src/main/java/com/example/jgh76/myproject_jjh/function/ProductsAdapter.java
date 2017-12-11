@@ -70,7 +70,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
     @Override
     public void onBindViewHolder(ProductsAdapter.ViewHolder viewHolder, final int position) {
         // Get the data model based on position
-        Product product = mProducts.get(position);
+        final Product product = mProducts.get(position);
         final String title = product.getTitle();
         final String price = product.getPrice();
         final String desc = product.getDesc();
@@ -110,11 +110,12 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         btn_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(mContext, ChatActivity.class);
-                intent.putExtra("title", title);
-                intent.putExtra("price",price+" 원");
-                intent.putExtra("imageUrl",imageUrl);
-                intent.putExtra("destinationUid", uid);
+                Intent intent = new Intent(mContext, ZoomActivity.class);
+                intent.putExtra("product",product);
+//                intent.putExtra("title", title);
+//                intent.putExtra("price",price+" 원");
+//                intent.putExtra("imageUrl",imageUrl);
+//                intent.putExtra("destinationUid", uid);
                 mContext.startActivity(intent);
             }
         });

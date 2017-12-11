@@ -53,6 +53,7 @@ import java.util.Locale;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -89,7 +90,7 @@ public class SignActivity extends AppCompatActivity {
     EditText et_phone;
 
     @BindView(R.id.iv_profile)
-    ImageView iv_profile;
+    CircleImageView iv_profile;
 
 
     @Override
