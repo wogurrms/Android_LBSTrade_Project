@@ -43,7 +43,7 @@ import butterknife.BindView;
  * Created by jgh76 on 2017-11-27.
  */
 
-public class MapFrag extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener{
+public class MapFrag extends Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnInfoWindowClickListener {
 
     private MapView mapView;
     private GoogleMap mMap;
@@ -110,6 +110,7 @@ public class MapFrag extends Fragment implements OnMapReadyCallback, GoogleMap.O
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setOnMarkerClickListener(this); // mMap 지도 객체에 마커 클릭 리스너 설정
+        mMap.setOnInfoWindowClickListener(this);
         FirebaseDatabase.getInstance().getReference("users").child(uid).child("location").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -164,14 +165,7 @@ public class MapFrag extends Fragment implements OnMapReadyCallback, GoogleMap.O
     @Override
     public boolean onMarkerClick(Marker marker) {
 
-        for(Product product : products){
-            if(marker.getTitle().equals(product.getTitle())){
-                Intent intent = new Intent(getContext(), ZoomActivity.class);
-                intent.putExtra("product", product);
-                startActivity(intent);
-            }
 
-        }
         return false;
     }
 
@@ -213,11 +207,24 @@ public class MapFrag extends Fragment implements OnMapReadyCallback, GoogleMap.O
             if(addresses.size() > 0){
                 Address bestResult = (Address) addresses.get(0);
                 LatLng currentLoc = new LatLng(bestResult.getLatitude(), bestResult.getLongitude());
-                mMap.addMarker(new MarkerOptions().position(currentLoc).title(markerMsg).snippet(price+" 원"));
+                Marker marker = mMap.addMarker(new MarkerOptions().position(currentLoc).title(markerMsg).snippet(price+" 원"));
+                marker.showInfoWindow();
             }
         } catch (IOException e) {
             Log.e(getClass().toString(), "Failed in using GeoCoder", e);
             return ;
+        }
+    }
+
+    @Override
+    public void onInfoWindowClick(Marker marker) {
+        for(Product product : products){
+            if(marker.getTitle().equals(product.getTitle())){
+                Intent intent = new Intent(getContext(), ZoomActivity.class);
+                intent.putExtra("product", product);
+                startActivity(intent);
+            }
+
         }
     }
 }

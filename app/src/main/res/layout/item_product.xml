@@ -17,15 +17,6 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_pro_desc"
             app:layout_constraintTop_toBottomOf="@+id/tv_pro_desc">
 
-            <Button
-                android:id="@+id/btn_contact"
-                android:layout_width="54dp"
-                android:layout_height="40dp"
-                android:layout_marginEnd="8dp"
-                android:text="연락"
-                app:layout_constraintBaseline_toBaselineOf="@+id/tv_pro_name"
-                app:layout_constraintEnd_toEndOf="parent" />
-
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="100dp"

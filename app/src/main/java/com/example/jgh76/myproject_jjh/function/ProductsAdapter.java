@@ -106,16 +106,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
                 .load(storageRef)
                 .into(iv_product);
 
-        Button btn_contact = viewHolder.btn_contact;
-        btn_contact.setOnClickListener(new View.OnClickListener() {
+        iv_product.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, ZoomActivity.class);
                 intent.putExtra("product",product);
-//                intent.putExtra("title", title);
-//                intent.putExtra("price",price+" 원");
-//                intent.putExtra("imageUrl",imageUrl);
-//                intent.putExtra("destinationUid", uid);
                 mContext.startActivity(intent);
             }
         });
@@ -157,7 +152,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
         TextView tv_pro_location;
         TextView tv_pro_time;
         TextView tv_pro_desc;
-        Button btn_contact;
 
         private ProductsAdapter mProducts;
         private Context context;
@@ -171,7 +165,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.ViewHo
             tv_pro_desc = (TextView)itemView.findViewById(R.id.tv_pro_desc);
             tv_pro_location = (TextView)itemView.findViewById(R.id.tv_pro_location);
             tv_pro_time = (TextView)itemView.findViewById(R.id.tv_pro_time);
-            btn_contact = (Button)itemView.findViewById(R.id.btn_contact);
 
             this.context = context;
             this.mProducts = mProducts;
