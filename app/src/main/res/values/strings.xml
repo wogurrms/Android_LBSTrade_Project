@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">MyProject_JJH</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_logout">Log out</string>
+
+    <string name="title_map">Map</string>
+    <string name="title_list">List</string>
+    <string name="title_chat">Chat</string>
+    <string name="title_logout">Log out</string>
+    <string name="title_post">Post</string>
+
+    <string name="title_activity_navi">홈</string>
+    <string name="title_activity_post">글쓰기</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
